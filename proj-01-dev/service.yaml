@@ -3,7 +3,6 @@ kind: Service
 metadata:
   name: express-service
 spec:
-  type: LoadBalancer
   ports:
   - port: 3001
     targetPort: 3000
