@@ -6,7 +6,7 @@ metadata:
     name: express-01-deployment
     project: express-01
     environment: development
-specs:
+spec:
   replicas: 3
   selector:
     matchLabels:
