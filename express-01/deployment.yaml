@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express-01-deployment
+  labels:
+    name: express-01-deployment
+    project: express-01
+    environment: development
+specs:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: express-01-pod
+      project: express-01
+      environment: development
+  template:
+    metadata:
+      name: express-01-pod
+      labels:
+        name: express-01-pod
+        project: express-01
+        environment: development
+    specs:
+      containers:
+        - name: express-01-pod
+          image: aeiyannnn/express:latest
+          ports:
+            - containerPord: 3000
