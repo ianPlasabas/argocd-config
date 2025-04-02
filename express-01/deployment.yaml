@@ -20,9 +20,9 @@ spec:
         name: express-01-pod
         project: express-01
         environment: development
-    specs:
+    spec:
       containers:
         - name: express-01-pod
           image: aeiyannnn/express-01:2.0
           ports:
-            - containerPord: 3000
+            - containerPort: 3000
