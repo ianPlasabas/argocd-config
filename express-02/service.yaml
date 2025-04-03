@@ -13,5 +13,5 @@ spec:
     project: express-02
     environment: production
   ports:
-    - port: 80
+    - port: 3006
       targetPort: 3000
