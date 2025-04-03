@@ -23,6 +23,6 @@ spec:
     spec:
       containers:
         - name: express-02-container
-          image: aeiyannnn/express-01:0952ef4be08a0ba49078c2e14c91a313f704842f
+          image: aeiyannnn/express-02:9341d8f7530a644e77cfefa370dcd07caddabcbe
           ports:
             - containerPort: 3000
