@@ -9,9 +9,9 @@ metadata:
 spec:
   type: NodePort
   selector:
-      name: express-03-pods
-      project: express-03
-      environment: production
+    name: express-03-pods
+    project: express-03
+    environment: production
   ports:
     - port: 3001
       targetPort: 3000
