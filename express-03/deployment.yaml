@@ -19,13 +19,14 @@ spec:
         name: express-03-pods
         project: express-03
         environment: production
-    containers:
-      - name: express-03-container
-        image: aeiyannnn/express-03:c0c35116e1de626fdcd8ade900a54ccbd5abb928
-        ports:
-          - containerPort: 3000
-        env:
-          - name: PORT
-            value: "3000"
-          - name: MONGO_URL
-            value: "mongodb://mongo:27017/users"
+    spec:
+      containers:
+        - name: express-03-container
+          image: aeiyannnn/express-03:c0c35116e1de626fdcd8ade900a54ccbd5abb928
+          ports:
+            - containerPort: 3000
+          env:
+            - name: PORT
+              value: "3000"
+            - name: MONGO_URL
+              value: "mongodb://mongo:27017/users"
