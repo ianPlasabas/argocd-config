@@ -23,6 +23,6 @@ spec:
     spec:
       containers:
         - name: express-01-pod
-          image: aeiyannnn/express-01:5.0
+          image: aeiyannnn/express-01:ee7462342b77655515552dbeb0ba9980c5d7ef44
           ports:
             - containerPort: 3000
