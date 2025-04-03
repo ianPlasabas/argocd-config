@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo  # MUST match the serviceName in the StatefulSet and the hostname in MONGO_URL
+  labels:
+    app: mongo # Good practice to label services, matches StatefulSet selector
+spec:
+  ports:
+  - name: mongo
+    port: 27017       # The port the service listens on
+    targetPort: 27017  # The port the MongoDB container listens on
+  selector:
+    app: mongo       # Selects pods with the label "app: mongo" (created by the StatefulSet)
+  clusterIP: None    # Makes this a Headless Service - Essential for StatefulSet DNS discovery
