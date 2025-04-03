@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/ianPlasabas/express-02.git
+    repoURL: https://github.com/ianPlasabas/argocd-config.git
     targetRevision: HEAD
     path: express-02
   destination:
