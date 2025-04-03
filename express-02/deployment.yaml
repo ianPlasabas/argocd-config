@@ -26,3 +26,6 @@ spec:
           image: aeiyannnn/express-02:90a23247dcc29e6913db06a6eee1b47925e44f6b
           ports:
             - containerPort: 3000
+          env:
+            - name: PORT
+              value: 3000
