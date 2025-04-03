@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongo # Often named the same as the service it provides
+spec:
+  serviceName: "mongo" # Associate with the service for stable DNS (mongo-0.mongo, etc.)
+  replicas: 1 # Start with one replica
+  selector:
+    matchLabels:
+      app: mongo # Selects pods with the 'app: mongo' label
+  template:
+    metadata:
+      labels:
+        app: mongo # Pods created by this statefulset will have this label
+    spec:
+      terminationGracePeriodSeconds: 10 # Allow time for graceful shutdown
+      containers:
+      - name: mongo
+        image: mongo:latest # Consider pinning to a specific version, e.g., mongo:6.0
+        ports:
+        - containerPort: 27017
+          name: mongo # Port name is conventional for StatefulSets
+        volumeMounts:
+        - name: mongo-persistent-storage # Matches the volumeClaimTemplates name
+          mountPath: /data/db
+        # --- Recommended: Add Environment Variables for Authentication ---
+        # env:
+        # - name: MONGO_INITDB_ROOT_USERNAME
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: mongo-secret # Name of the Kubernetes Secret
+        #       key: username     # Key within the Secret containing the username
+        # - name: MONGO_INITDB_ROOT_PASSWORD
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: mongo-secret # Name of the Kubernetes Secret
+        #       key: password     # Key within the Secret containing the password
+  # Defines a template for PersistentVolumeClaims. Each pod gets its own PVC.
+  volumeClaimTemplates:
+  - metadata:
+      name: mongo-persistent-storage # Name used in volumeMounts
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi # Adjust size as needed
+      # storageClassName: standard # Optional: specify if you need a specific storage class

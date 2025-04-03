@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: express-03-service
+  labels:
+    name: express-03-service
+    project: express-03
+    environment: production
+spec:
+  type: NodePort
+  selector:
+      name: express-03-pods
+      project: express-03
+      environment: production
+  ports:
+    - port: 3001
+      targetPort: 3000
